@@ -1,4 +1,6 @@
 ﻿using Log_BLL;
+using Quartz;
+using Quartz.Impl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,44 +23,34 @@ namespace DemoMain
 
             foreach (Type t in arrayType)
             {
-                var attr = t.GetCustomAttribute<DescriptionAttribute>();
-                Console.WriteLine(attr.Description);
+
+                // 获得类的注释
+                //var attr = t.GetCustomAttribute<DescriptionAttribute>();
+                //Console.WriteLine(attr.Description);
                 if (t.FullName == "Log_BLL.PrintDateTime")
                 {
-                    PrintDateTime o = Activator.CreateInstance(t) as PrintDateTime;
-                    o.Print();
+                    // Grab the Scheduler instance from the Factory 
+                    IScheduler scheduler = StdSchedulerFactory.GetDefaultScheduler();
 
-                    object obj = t.GetMethods()[3].Invoke(o, new[] { "hello the world!" });
+                    // and start it off
+                    scheduler.Start();
 
-                    //object obj = t.GetMethods()[1].Invoke(null, new[] { "hello the world!" });
+                    // define the job and tie it to our HelloJob class
+                    IJobDetail job = JobBuilder.Create(t)
+                        .WithIdentity("job1", "group1").UsingJobData("hello", "hello the world!")
+                        .Build();
+
+                    // Trigger the job to run now, and then repeat every 10 seconds
+                    ITrigger trigger = TriggerBuilder.Create()
+                        .WithIdentity("trigger1", "group1")
+                        .StartNow().WithCronSchedule("0/1 * * * * ?")
+                        .Build();
+
+                    // Tell quartz to schedule the job using our trigger
+                    scheduler.ScheduleJob(job, trigger);
                 }
-
-
             }
-
             Console.ReadKey();
-
         }
-    }
-
-
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public class ParameterTypeAttribute : Attribute
-    {
-
-        public Type ParameterType
-        {
-            get;
-            private set;
-        }
-
-        public ParameterTypeAttribute(Type type)
-        {
-            if (type == null)
-                throw new ArgumentNullException("type");
-
-            this.ParameterType = type;
-        }
-
     }
 }

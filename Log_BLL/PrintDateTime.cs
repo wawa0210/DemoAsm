@@ -41,9 +41,14 @@ namespace Log_BLL
 
         public void Execute(IJobExecutionContext context)
         {
-            Console.WriteLine("task excute，jobSays:hello the world!");
-            Thread t = new Thread(new ThreadStart(Hello));
-            t.Start();
+            JobKey key = context.JobDetail.Key;
+
+            JobDataMap dataMap = context.JobDetail.JobDataMap;
+
+            string jobSays = dataMap.GetString("hello");
+
+            Console.WriteLine("task excute |||" + jobSays);
+
         }
 
         public void Hello()
