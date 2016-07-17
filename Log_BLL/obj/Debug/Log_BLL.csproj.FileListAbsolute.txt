@@ -1,0 +1,5 @@
+D:\SelfProject\DemoAsm\Log_BLL\bin\Debug\Log_BLL.dll
+D:\SelfProject\DemoAsm\Log_BLL\bin\Debug\Log_BLL.pdb
+D:\SelfProject\DemoAsm\Log_BLL\bin\Debug\Quartz.dll
+D:\SelfProject\DemoAsm\Log_BLL\obj\Debug\Log_BLL.dll
+D:\SelfProject\DemoAsm\Log_BLL\obj\Debug\Log_BLL.pdb

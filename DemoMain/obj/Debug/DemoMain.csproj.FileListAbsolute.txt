@@ -1,0 +1,9 @@
+D:\SelfProject\DemoAsm\DemoMain\bin\Debug\DemoMain.exe.config
+D:\SelfProject\DemoAsm\DemoMain\bin\Debug\DemoMain.exe
+D:\SelfProject\DemoAsm\DemoMain\bin\Debug\DemoMain.pdb
+D:\SelfProject\DemoAsm\DemoMain\bin\Debug\Log_BLL.dll
+D:\SelfProject\DemoAsm\DemoMain\bin\Debug\Quartz.dll
+D:\SelfProject\DemoAsm\DemoMain\bin\Debug\Log_BLL.pdb
+D:\SelfProject\DemoAsm\DemoMain\obj\Debug\DemoMain.csprojResolveAssemblyReference.cache
+D:\SelfProject\DemoAsm\DemoMain\obj\Debug\DemoMain.exe
+D:\SelfProject\DemoAsm\DemoMain\obj\Debug\DemoMain.pdb
